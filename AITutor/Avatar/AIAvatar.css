@@ -1,0 +1,454 @@
+/* AI Avatar Styles */
+
+.ai-avatar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Avatar sizes */
+.ai-avatar--small .avatar-main {
+  width: 60px;
+  height: 60px;
+}
+
+.ai-avatar--medium .avatar-main {
+  width: 80px;
+  height: 80px;
+}
+
+.ai-avatar--large .avatar-main {
+  width: 120px;
+  height: 120px;
+}
+
+/* Voice waves animation */
+.voice-waves {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.wave {
+  position: absolute;
+  border: 2px solid rgba(79, 70, 229, 0.3);
+  border-radius: 50%;
+  animation: wave-pulse 2s infinite ease-out;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wave-1 {
+  width: 100px;
+  height: 100px;
+  animation-delay: 0s;
+}
+
+.wave-2 {
+  width: 140px;
+  height: 140px;
+  animation-delay: 0.5s;
+}
+
+.wave-3 {
+  width: 180px;
+  height: 180px;
+  animation-delay: 1s;
+}
+
+@keyframes wave-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Avatar container */
+.avatar-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Main avatar */
+.avatar-main {
+  border-radius: 50%;
+  border: 3px solid;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Avatar states */
+.ai-avatar--speaking .avatar-main {
+  transform: scale(1.05);
+  animation: gentle-bounce 1s infinite ease-in-out;
+}
+
+.ai-avatar--thinking .avatar-main {
+  animation: gentle-sway 2s infinite ease-in-out;
+}
+
+.ai-avatar--listening .avatar-main {
+  animation: gentle-pulse 2s infinite ease-in-out;
+}
+
+/* Avatar face */
+.avatar-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Eyes */
+.eyes {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.eye {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-avatar--large .eye {
+  width: 16px;
+  height: 16px;
+}
+
+.ai-avatar--small .eye {
+  width: 8px;
+  height: 8px;
+}
+
+.pupil {
+  width: 6px;
+  height: 6px;
+  background-color: #1f2937;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.ai-avatar--large .pupil {
+  width: 8px;
+  height: 8px;
+}
+
+.ai-avatar--small .pupil {
+  width: 4px;
+  height: 4px;
+}
+
+/* Eye states */
+.eye--thinking .pupil {
+  transform: translateX(2px);
+  animation: thinking-eyes 1.5s infinite ease-in-out;
+}
+
+@keyframes thinking-eyes {
+  0%,
+  100% {
+    transform: translateX(2px);
+  }
+  50% {
+    transform: translateX(-2px);
+  }
+}
+
+/* Mouth */
+.mouth {
+  width: 16px;
+  height: 8px;
+  border-radius: 0 0 16px 16px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.ai-avatar--large .mouth {
+  width: 20px;
+  height: 10px;
+}
+
+.ai-avatar--small .mouth {
+  width: 12px;
+  height: 6px;
+}
+
+/* Mouth personalities */
+.mouth--friendly {
+  background-color: #f59e0b;
+  border: 2px solid #d97706;
+}
+
+.mouth--professional {
+  background-color: #6b7280;
+  border: 2px solid #4b5563;
+}
+
+.mouth--encouraging {
+  background-color: #10b981;
+  border: 2px solid #059669;
+}
+
+.mouth--casual {
+  background-color: #f59e0b;
+  border: 2px solid #d97706;
+}
+
+/* Mouth states */
+.mouth--speaking {
+  animation: mouth-speak 0.5s infinite alternate ease-in-out;
+}
+
+.mouth--idle {
+  transform: scaleY(0.7);
+}
+
+.mouth--listening {
+  transform: scaleY(0.9);
+  animation: gentle-pulse 2s infinite ease-in-out;
+}
+
+.mouth--thinking {
+  transform: scaleX(0.8) scaleY(0.6);
+}
+
+@keyframes mouth-speak {
+  0% {
+    transform: scaleY(0.5) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1.1);
+  }
+}
+
+/* Speech indicator inside mouth */
+.mouth-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.speech-indicator {
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: speech-pulse 0.3s infinite alternate ease-in-out;
+}
+
+@keyframes speech-pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Thinking dots */
+.thinking-dots {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: thinking-dots 1.2s infinite ease-in-out;
+}
+
+.dot-1 {
+  animation-delay: 0s;
+}
+.dot-2 {
+  animation-delay: 0.2s;
+}
+.dot-3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes thinking-dots {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  30% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+/* Status glow */
+.status-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.status-glow--speaking {
+  width: 110%;
+  height: 110%;
+  opacity: 0.3;
+  animation: glow-pulse 1s infinite ease-in-out;
+}
+
+.status-glow--thinking {
+  width: 105%;
+  height: 105%;
+  opacity: 0.2;
+  animation: glow-pulse 2s infinite ease-in-out;
+}
+
+.status-glow--listening {
+  width: 108%;
+  height: 108%;
+  opacity: 0.25;
+  animation: glow-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+/* Avatar status text */
+.avatar-status {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+  min-height: 16px;
+  transition: all 0.3s ease;
+}
+
+.ai-avatar--small .avatar-status {
+  font-size: 10px;
+  margin-top: 8px;
+}
+
+.ai-avatar--large .avatar-status {
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+/* General animations */
+@keyframes gentle-bounce {
+  0%,
+  100% {
+    transform: scale(1.05) translateY(0);
+  }
+  50% {
+    transform: scale(1.05) translateY(-2px);
+  }
+}
+
+@keyframes gentle-sway {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ai-avatar--medium .avatar-main {
+    width: 70px;
+    height: 70px;
+  }
+
+  .ai-avatar--large .avatar-main {
+    width: 100px;
+    height: 100px;
+  }
+
+  .wave-1 {
+    width: 80px;
+    height: 80px;
+  }
+  .wave-2 {
+    width: 120px;
+    height: 120px;
+  }
+  .wave-3 {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ai-avatar * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ai-avatar--speaking .avatar-main,
+  .ai-avatar--thinking .avatar-main,
+  .ai-avatar--listening .avatar-main {
+    transform: none !important;
+  }
+}
